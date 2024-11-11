@@ -1,0 +1,25 @@
+.header {
+  width: 90vw;
+  height: 100px;
+  border: 1px solid white;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.footer {
+  width: 90vw;
+  height: 100px;
+  border: 1px solid white;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  font-size: 25px;
+  margin-top: 10px;
+}
