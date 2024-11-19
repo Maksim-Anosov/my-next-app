@@ -17,7 +17,7 @@ export default function Blog() {
 
   return (
     <div style={{ height: '100%' }}>
-      <SearchPosts />
+      <SearchPosts onSearch={setPosts} onLoading={setLoading} />
       {loading ? <Loading /> : <PostsList posts={posts} />}
     </div>
   );

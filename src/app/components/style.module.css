@@ -1,6 +1,6 @@
 .header {
   width: 90vw;
-  height: 20%;
+  height: 20vh;
   border: 1px solid white;
   margin: auto;
   display: flex;
@@ -12,7 +12,7 @@
 
 .footer {
   width: 90vw;
-  height: 20%;
+  height: 20vh;
   border: 1px solid white;
   margin: auto;
   display: flex;
@@ -67,3 +67,22 @@
   }
 }
 
+.post {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.arrow {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 50px;
+
+  &:hover {
+    transform: scale(1.1);
+    color: rgb(0, 233, 245);
+  }
+}

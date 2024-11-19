@@ -11,7 +11,7 @@ export function PostsList({ posts }: Props) {
   return (
     <ul className={s.blog}>
     {posts.map((post: { id: number; title: string }) => (
-      <li key={post.id}><Link href={`/blog/${post.id}`}>{post.title}</Link></li>
+      <li key={post.id}><Link className={s.link} href={`/blog/${post.id}`}>{post.title}</Link></li>
     ))}
   </ul>
   )

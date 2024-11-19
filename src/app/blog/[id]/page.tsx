@@ -1,8 +1,6 @@
 import { Metadata } from 'next';
-import s from './style.module.css';
 import { getPost } from '@/app/services/getPost';
-import Link from 'next/link';
-import { MoveLeft } from 'lucide-react';
+import { PostCard } from '@/app/components/Post';
 
 type Props = {
   params: { id: string };
@@ -11,7 +9,7 @@ type Props = {
 export async function generateMetadata({
   params
 }: Props): Promise<Metadata> {
-  const { id } = await params;
+  const { id } = params;
   const data = await getPost(id);
 
   return {
@@ -20,14 +18,10 @@ export async function generateMetadata({
 }
 
 export default async function Post({ params }: Props) {
-  const { id } = await params;
+  const { id } = params;
   const data = await getPost(id);
 
   return (
-    <div className={s.post}>
-      <Link className={s.arrow} href="/blog"><MoveLeft size={50}/></Link>
-      <h1>{data.title}</h1>
-      <p>{data.body}</p>
-    </div>
+    <PostCard post={data} />
   );
 }
