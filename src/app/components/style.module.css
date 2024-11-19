@@ -26,3 +26,29 @@
   color: rgb(0, 233, 245);
   text-decoration: underline;
 }
+
+.link {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: rgb(0, 233, 245);
+  }
+}
+
+.container {
+  width: 90vw;
+  border: 1px solid white;
+  margin: auto;
+}
+
+.blog {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  font-size: 20px;
+  height: 80vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}

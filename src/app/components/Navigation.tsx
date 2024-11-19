@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import s from './style.module.css'
+import clsx from "clsx";
 
 type NavLink = {
   href: string;
@@ -21,7 +22,7 @@ export function Navigation({ links }: Props) {
         <Link
           key={href}
           href={href}
-          className={pathname === href ? s.active : ""}
+          className={clsx(s.link, pathname === href && s.active)}
         >
           {label}
         </Link>

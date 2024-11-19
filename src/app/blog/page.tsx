@@ -1,26 +1,12 @@
-import Link from "next/link";
-import s from '../page.module.css'
-import clsx from "clsx";
-async function getData() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  return res.json();
-}
+import { getPosts } from "../services/getPosts";
+import { PostsList } from "../components/PostsList";
 
 export default async function Blog() {
-  const data = await getData();
+  const data = await getPosts();
 
   return (
     <div>
-      <ul className={clsx(s.container, s.blog)}>
-        {data.map((post: { id: number; title: string }) => (
-          <li key={post.id}><Link href={`/blog/${post.id}`}>{post.title}</Link></li>
-        ))}
-      </ul>
+      <PostsList posts={data} />
     </div>
   );
 }
