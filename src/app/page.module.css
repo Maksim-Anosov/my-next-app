@@ -1,7 +1,9 @@
 .container {
   width: 90vw;
-  border: 1px solid white;
   margin: auto;
+  height: 80%;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 
 .blog {

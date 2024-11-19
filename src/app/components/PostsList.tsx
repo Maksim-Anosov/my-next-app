@@ -1,4 +1,4 @@
-import clsx from "clsx";
+'use client';
 import { Post } from "../services/types"
 import s from './style.module.css'
 import Link from "next/link";
@@ -9,7 +9,7 @@ type Props = {
 
 export function PostsList({ posts }: Props) {
   return (
-    <ul className={clsx(s.container, s.blog)}>
+    <ul className={s.blog}>
     {posts.map((post: { id: number; title: string }) => (
       <li key={post.id}><Link href={`/blog/${post.id}`}>{post.title}</Link></li>
     ))}

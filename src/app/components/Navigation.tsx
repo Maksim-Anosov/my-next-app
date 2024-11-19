@@ -17,7 +17,7 @@ export function Navigation({ links }: Props) {
   const pathname = usePathname();
 
   return (
-    <nav className={s.header}>
+    <nav className={s.navigation}>
       {links.map(({ href, label }) => (
         <Link
           key={href}
