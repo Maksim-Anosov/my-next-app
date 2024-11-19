@@ -1,13 +1,16 @@
-import Link from "next/link";
-import s from './style.module.css'
+import s from './style.module.css';
+import { Navigation } from './Navigation';
 
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/blog', label: 'Blog' }
+];
 export function Header() {
   return (
     <header className={s.header}>
-      <Link href='/'>Home</Link>
-      <Link href='/about'>About</Link>
-      <Link href='/contact'>Contact</Link>
-      <Link href='/blog'>Blog</Link>
+      <Navigation links={links} />
     </header>
   );
 }
