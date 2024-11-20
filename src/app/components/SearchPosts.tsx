@@ -1,23 +1,16 @@
 'use client';
-import { getPostsBySearch } from '../services/getPostsBySearch';
-import { Post } from '../services/types';
+import { useShallow } from 'zustand/shallow';
+import { useStore } from '../store/store';
 import s from './style.module.css'
 import { useState } from "react";
 
-type Props = {
-  onSearch: (value: Post[]) => void
-  onLoading: (value: boolean) => void
-}
-
-export function SearchPosts({ onSearch, onLoading }: Props) {
+export function SearchPosts() {
   const [search, setSearch] = useState('');
+  const getPostsBySearch = useStore(useShallow((state) => state.getPostsBySearch));
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onLoading(true);
-    const data = await getPostsBySearch(search);
-    onSearch(data);
-    onLoading(false);
+    await getPostsBySearch(search);
   }
 
   return (
