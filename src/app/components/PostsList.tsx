@@ -19,7 +19,7 @@ export function PostsList() {
 
   return (
     loading ? <Loading /> : <ul className={s.blog}>
-      {posts.map((post: { id: number; title: string }) => (
+      {posts.map((post) => (
         <li key={post.id}><Link className={s.link} href={`/blog/${post.id}`}>{post.title}</Link></li>
       ))}
     </ul> 
