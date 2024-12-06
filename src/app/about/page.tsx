@@ -54,7 +54,7 @@ MenuAccordion.Item = function MenuItem({ title }: { title: string }) {
 
 function CompoundComponent() {
   return (
-    <div style={{ textAlign: 'center', fontSize: '50px', height: '80vh' }}>
+    <div style={{ textAlign: 'center', fontSize: '25px', height: '80vh' }}>
       <MenuAccordion>
         <MenuAccordion.Group title='Меню'>
           <MenuAccordion.Item title='Пункт 1' />

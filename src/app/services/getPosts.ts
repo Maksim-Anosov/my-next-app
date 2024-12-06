@@ -1,11 +1,11 @@
 import { Post } from "./types";
 
-export async function getPosts(): Promise<Post[]> {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
+export async function getPosts(): Promise<Post[] | undefined> {
+  try {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
   }
-
-  return res.json();
 }

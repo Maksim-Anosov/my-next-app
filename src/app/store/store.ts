@@ -6,8 +6,8 @@ import { getPostsBySearch } from '../services/getPostsBySearch';
 type Store = {
   posts: Post[],
   loading: boolean,
-  getPosts: () => Promise<Post[]>
-  getPostsBySearch: (search: string) => Promise<Post[]>
+  getPosts: () => Promise<Post[] | undefined>
+  getPostsBySearch: (search: string) => Promise<Post[] | undefined>
 }
 
 export const useStore = create<Store>()((set) => ({
