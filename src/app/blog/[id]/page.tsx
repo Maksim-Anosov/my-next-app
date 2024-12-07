@@ -9,7 +9,7 @@ type Props = {
 export async function generateMetadata({
   params
 }: Props): Promise<Metadata> {
-  const { id } = params;
+  const { id } = await params;
   const data = await getPost(id);
 
   return {
@@ -18,7 +18,7 @@ export async function generateMetadata({
 }
 
 export default async function Post({ params }: Props) {
-  const { id } = params;
+  const { id } = await params;
   const data = await getPost(id);
 
   return (
