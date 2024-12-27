@@ -1,22 +1,50 @@
 'use client';
 import { useShallow } from 'zustand/shallow';
 import { useStore } from '../store/store';
-import s from './style.module.css'
-import { useState } from "react";
+import s from './style.module.css';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { getPostsBySearch } from '../services/getPostsBySearch';
 
 export function SearchPosts() {
   const [search, setSearch] = useState('');
-  const getPostsBySearch = useStore(useShallow((state) => state.getPostsBySearch));
+  const setPosts = useStore(useShallow((state) => state.setPosts));
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    await getPostsBySearch(search);
-  }
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const debouncedSearch = useCallback((search: string) => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+
+    timerRef.current = setTimeout(() => {
+      getPostsBySearch(search).then((posts) => {
+        if (posts) setPosts(posts);
+      });
+    }, 500);
+  }, []);
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newSearch = e.target.value;
+    setSearch(newSearch);
+    debouncedSearch(newSearch);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <form className={s.search} onSubmit={handleSubmit}>
-      <input type="search" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
-      <button className={s.link} type="submit">Search</button>
+    <form className={s.search}>
+      <input
+        type='search'
+        placeholder='Search...'
+        value={search}
+        onChange={onChange}
+      />
     </form>
-  )
+  );
 }
