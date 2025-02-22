@@ -63,6 +63,7 @@ export default function Contacts() {
         placeholder='Search by username'
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
+        autoFocus={true}
       />
 
       <table
